@@ -1,9 +1,11 @@
-import { InjectionKey } from "@vue/runtime-core";
+import type { InjectionKey } from "@vue/runtime-core";
 import { createStore, useStore as baseUseStore } from "vuex";
+import type { StoreOptions } from "vuex";
 
+import { State as RootState } from "./root";
 import counter from "./modules/counter";
 
-export const store = createStore({
+export const store: StoreOptions<RootState> = createStore({
   modules: {
     counter,
   },

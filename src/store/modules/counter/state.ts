@@ -1,5 +1,7 @@
-const state = {
+export interface State {
+  count: number;
+}
+
+export default (): State => ({
   count: 0,
-};
-export type State = typeof state;
-export default (): State => state;
+});
