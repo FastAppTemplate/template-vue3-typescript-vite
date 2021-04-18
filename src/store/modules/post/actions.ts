@@ -13,15 +13,33 @@ interface Context extends ActionContext<State, RootState> {
 }
 
 interface Actions extends ActionTree<State, RootState> {
-  [mutationTypes.SAVE_COUNT](
+  getPost(
     { commit, rootState }: Context,
-    count: number
+    payload: {
+      postId: string;
+    }
   ): void;
 }
 
 const actions: Actions = {
-  [mutationTypes.SAVE_COUNT]({ commit }, count) {
-    commit(mutationTypes.SAVE_COUNT, count);
+  getPost({ commit }, payload) {
+    fetch(`https://jsonplaceholder.typicode.com/posts/${payload.postId}`)
+      .then((response) => response.json())
+      .then((json) => {
+        commit(mutationTypes.SAVE_POST_DATA, {
+          post: json as State["post"],
+        });
+      });
+
+    fetch(
+      `https://jsonplaceholder.typicode.com/posts/${payload.postId}/comments`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        commit(mutationTypes.SAVE_POST_COMMENT, {
+          comments: json as State["comments"],
+        });
+      });
   },
 };
 

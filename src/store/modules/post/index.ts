@@ -3,8 +3,10 @@ import getters from "./getters";
 import mutations from "./mutations";
 import actions from "./actions";
 
+export type { State } from "./state";
+
 export default {
-  namespace: true,
+  namespaced: true,
   state,
   getters,
   mutations,

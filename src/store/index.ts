@@ -1,18 +1,22 @@
 import type { InjectionKey } from "@vue/runtime-core";
-import { createStore, useStore as baseUseStore } from "vuex";
-import type { StoreOptions } from "vuex";
+import { createStore, useStore as baseUseStore, createLogger } from "vuex";
+import type { Store } from "vuex";
 
-import { State as RootState } from "./root";
-import counter from "./modules/post";
+import post, { State as PostState } from "./modules/post";
 
-export const store: StoreOptions<RootState> = createStore({
+export interface RootState {
+  post: PostState;
+}
+
+export const store = createStore({
   modules: {
-    counter,
+    post,
   },
+  plugins: process.env.NODE_ENV !== "production" ? [createLogger()] : [],
 });
 
-export const key: InjectionKey<typeof store["state"]> = Symbol();
+export const key: InjectionKey<RootState> = Symbol();
 
-export function useStore(): typeof store {
+export function useStore(): Store<RootState> {
   return baseUseStore(key);
 }
