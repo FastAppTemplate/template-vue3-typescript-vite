@@ -1,8 +1,9 @@
 <template>
-  <div>Home</div>
+  <h1>Home</h1>
+  <p>This is a Vue3 + TypeScript + Vite Template.</p>
 </template>
 
-<script lang="ts">
+<script>
 export default {};
 </script>
 

@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import Home from "./pages/Home.vue";
-import About from './pages/About.vue';
+import Posts from "./pages/Posts.vue";
+import Post from "./pages/Post/index.vue";
 
 const routes = [
   {
@@ -9,9 +10,13 @@ const routes = [
     component: Home,
   },
   {
-    path: "/about",
-    component: About
-  }
+    path: "/posts",
+    component: Posts,
+  },
+  {
+    path: "/post/:postId",
+    component: Post,
+  },
 ];
 
 const router = createRouter({
@@ -19,4 +24,4 @@ const router = createRouter({
   routes,
 });
 
-export default router
+export default router;
