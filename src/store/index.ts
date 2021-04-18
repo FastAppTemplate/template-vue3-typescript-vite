@@ -3,7 +3,7 @@ import { createStore, useStore as baseUseStore } from "vuex";
 import type { StoreOptions } from "vuex";
 
 import { State as RootState } from "./root";
-import counter from "./modules/counter";
+import counter from "./modules/post";
 
 export const store: StoreOptions<RootState> = createStore({
   modules: {
