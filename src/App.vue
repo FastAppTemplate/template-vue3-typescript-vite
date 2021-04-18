@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import PageLayout from "./components/PageLayout/index.vue";
+import PageLayout from "@/components/PageLayout/index.vue";
 
 export default defineComponent({
   name: "App",
